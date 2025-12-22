@@ -3,1010 +3,393 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nova Data Consulting | Ciencia de Datos & IA</title>
-  <meta name="description" content="Consultoría en ciencia de datos: analítica, ML, automatización, BI y MLOps. De datos a decisiones en semanas, no meses." />
-  <meta name="theme-color" content="#0b1220" />
+  <title>Luis Alejandro Quimbayo | Data Scientist & Economist</title>
+  
+  <meta name="description" content="Data Scientist especializado en economía, finanzas y automatización. Machine Learning y analítica avanzada con impacto real." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    :root{
-      --bg: #070b14;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.09);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.72);
-      --faint: rgba(255,255,255,.55);
-      --line: rgba(255,255,255,.12);
-      --accent: #7c3aed;   /* morado */
-      --accent2: #22c55e;  /* verde */
-      --warn: #f59e0b;
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
-      --r: 18px;
-      --w: 1120px;
+    :root {
+      --primary: #0b3b8f;
+      --primary-light: #2563eb;
+      --bg: #0f172a; /* Slate 900 */
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-cyan: #38bdf8;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.1);
     }
-    *{ box-sizing: border-box; }
-    html,body{ height: 100%; }
-    body{
+
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color: var(--text);
-      background:
-        radial-gradient(1200px 600px at 20% 10%, rgba(124,58,237,.25), transparent 60%),
-        radial-gradient(900px 500px at 75% 30%, rgba(34,197,94,.18), transparent 55%),
-        radial-gradient(800px 450px at 50% 95%, rgba(245,158,11,.10), transparent 55%),
-        linear-gradient(180deg, #070b14 0%, #050713 60%, #040511 100%);
-      overflow-x: hidden;
-    }
-    a{ color: inherit; text-decoration: none; }
-    button, input, textarea, select{ font: inherit; }
-    .container{ max-width: var(--w); margin: 0 auto; padding: 0 20px; }
-    .chip{
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 10px 12px; border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      backdrop-filter: blur(10px);
-    }
-    .chip .dot{
-      width: 10px; height: 10px; border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,.2) 40%, transparent 60%),
-                  linear-gradient(90deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 4px rgba(124,58,237,.14);
-    }
-    .btn{
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      padding: 12px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      cursor: pointer;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-      user-select: none;
-      white-space: nowrap;
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18); }
-    .btn:active{ transform: translateY(0px); }
-    .btn.primary{
-      border-color: rgba(124,58,237,.55);
-      background: linear-gradient(135deg, rgba(124,58,237,.75), rgba(34,197,94,.45));
-      box-shadow: 0 18px 40px rgba(124,58,237,.20);
-    }
-    .btn.primary:hover{ border-color: rgba(124,58,237,.75); }
-    .btn.ghost{ background: transparent; }
-    .icon{
-      width: 18px; height: 18px; display: inline-block;
-      flex: 0 0 auto;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 0% 0%, rgba(11, 59, 143, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+      color: var(--text-main);
+      line-height: 1.6;
     }
 
-    /* Header */
-    .header{
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(7,11,20,.55);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      backdrop-filter: blur(14px);
-    }
-    .nav{
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 0;
-      gap: 14px;
-    }
-    .brand{
-      display: inline-flex; align-items: center; gap: 10px;
-      font-weight: 750;
-      letter-spacing: .2px;
-    }
-    .logo{
-      width: 38px; height: 38px; border-radius: 12px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,.08) 45%, transparent 60%),
-                  linear-gradient(135deg, rgba(124,58,237,.95), rgba(34,197,94,.55));
-      box-shadow: 0 14px 40px rgba(0,0,0,.42);
-      border: 1px solid rgba(255,255,255,.18);
-    }
-    .navlinks{
-      display: flex; align-items: center; gap: 14px;
-      color: var(--muted);
-      font-weight: 550;
-      font-size: 14px;
-    }
-    .navlinks a{
-      padding: 10px 10px;
-      border-radius: 12px;
-      border: 1px solid transparent;
-      transition: background .15s ease, border-color .15s ease, color .15s ease;
-    }
-    .navlinks a:hover{
-      background: rgba(255,255,255,.05);
-      border-color: rgba(255,255,255,.10);
-      color: rgba(255,255,255,.90);
-    }
-    .navcta{ display: flex; align-items: center; gap: 10px; }
-    .burger{
-      display: none;
-      width: 42px; height: 42px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      cursor: pointer;
-    }
-    .burger svg{ width: 20px; height: 20px; }
-    .mobile{
-      display: none;
-      padding: 0 0 16px 0;
-    }
-    .mobile .panel{
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      border-radius: 18px;
-      padding: 10px;
-    }
-    .mobile a{
-      display: block;
-      padding: 12px 12px;
-      border-radius: 14px;
-      color: var(--muted);
-      border: 1px solid transparent;
-    }
-    .mobile a:hover{
-      background: rgba(255,255,255,.05);
-      border-color: rgba(255,255,255,.10);
-      color: rgba(255,255,255,.90);
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-    /* Hero */
-    .hero{ padding: 42px 0 22px; }
-    .heroGrid{
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 22px;
-      align-items: stretch;
+    /* Header Nav */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: var(--r);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .heroMain{ padding: 26px; position: relative; }
-    .hero h1{
-      margin: 16px 0 10px;
-      font-size: clamp(28px, 3.2vw, 46px);
-      line-height: 1.05;
-      letter-spacing: -0.5px;
-    }
-    .hero p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.55;
-      max-width: 62ch;
-    }
-    .heroActions{
-      margin-top: 16px;
-      display: flex; gap: 12px; flex-wrap: wrap;
-      align-items: center;
-    }
-    .heroMeta{
-      margin-top: 18px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-      color: var(--faint);
-      font-size: 13px;
-    }
-    .spark{
-      position: absolute; inset: -120px -180px auto auto;
-      width: 520px; height: 520px; border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(124,58,237,.26), transparent 55%),
-                  radial-gradient(circle at 70% 70%, rgba(34,197,94,.18), transparent 55%);
-      filter: blur(10px);
-      pointer-events: none;
-    }
+    .nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+    .mark { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); box-shadow: 0 0 20px rgba(37,99,235,0.4); }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { font-size: 0.85rem; color: var(--text-muted); transition: 0.3s; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent-cyan); }
 
-    .heroSide{ padding: 18px; }
-    .statGrid{
-      display: grid; gap: 12px;
-      grid-template-columns: 1fr 1fr;
-    }
-    .stat{
-      padding: 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-    }
-    .stat .k{
-      font-size: 22px; font-weight: 760;
-      letter-spacing: -0.2px;
-    }
-    .stat .v{
-      color: var(--muted);
-      margin-top: 6px;
-      font-size: 13px;
-      line-height: 1.3;
-    }
-    .mini{
-      margin-top: 12px;
-      padding: 14px;
-      border-radius: 16px;
-      border: 1px dashed rgba(255,255,255,.14);
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-    .mini b{ color: rgba(255,255,255,.9); }
+    /* Hero Section */
+    .hero { padding: 80px 0 40px; display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 30px; align-items: center; }
+    .hero-content h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin: 20px 0; font-weight: 800; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .kicker { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: var(--glass); border: 1px solid var(--border); border-radius: 100px; color: var(--accent-cyan); font-size: 0.8rem; font-weight: 600; }
+    .hero-p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin-bottom: 30px; }
 
-    /* Sections common */
-    section{ padding: 28px 0; }
-    .sectionHead{
-      display: flex; align-items: flex-end; justify-content: space-between;
-      gap: 14px; flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-    .sectionHead h2{
-      margin: 0;
-      font-size: 24px;
-      letter-spacing: -0.2px;
-    }
-    .sectionHead p{
-      margin: 0;
-      color: var(--muted);
-      max-width: 62ch;
-      line-height: 1.45;
-    }
+    /* Buttons */
+    .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { padding: 12px 24px; border-radius: 12px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; cursor: pointer; border: 1px solid var(--border); display: inline-flex; align-items: center; gap: 8px; }
+    .btn.primary { background: var(--primary-light); color: white; border: none; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
+    .btn.primary:hover { background: #3b82f6; transform: translateY(-2px); }
+    .btn.outline { background: var(--glass); color: white; }
+    .btn.outline:hover { background: rgba(255,255,255,0.1); }
 
-    .grid3{
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    .grid2{
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-    .panel{
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: var(--r);
-      background: rgba(255,255,255,.04);
-    }
-    .panel h3{ margin: 0 0 8px; font-size: 16px; }
-    .panel p{ margin: 0; color: var(--muted); line-height: 1.5; }
-    .badge{
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 10px;
-      width: fit-content;
-    }
-    .badge .pill{
-      width: 10px; height: 10px; border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 4px rgba(34,197,94,.12);
-    }
-    .list{
-      margin-top: 10px;
-      display: grid; gap: 8px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .li{
-      display: flex; gap: 10px; align-items: flex-start;
-    }
-    .li svg{ margin-top: 2px; opacity: .9; }
+    /* Cards & Grids */
+    .section-title { margin-bottom: 40px; }
+    .section-title h2 { font-size: 2rem; margin: 0; }
+    .section-title p { color: var(--text-muted); margin: 8px 0 0; }
 
-    /* Case studies */
-    .case{
-      padding: 18px;
-      border-radius: var(--r);
-      border: 1px solid rgba(255,255,255,.10);
-      background:
-        radial-gradient(900px 300px at 15% 0%, rgba(124,58,237,.16), transparent 55%),
-        rgba(255,255,255,.04);
-    }
-    .caseTop{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
-    .case h3{ margin: 0 0 6px; }
-    .case p{ margin: 0; color: var(--muted); line-height: 1.5; }
-    .tags{ display:flex; gap:8px; flex-wrap: wrap; margin-top: 12px; }
-    .tag{
-      font-size: 12px;
-      color: rgba(255,255,255,.78);
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-      padding: 7px 10px;
-      border-radius: 999px;
-    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 28px; transition: 0.4s; position: relative; overflow: hidden; }
+    .card:hover { border-color: var(--primary-light); transform: translateY(-5px); background: rgba(30, 41, 59, 0.9); }
+    
+    .tag-container { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+    .tag { font-size: 11px; padding: 4px 10px; border-radius: 6px; background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.2); font-weight: 600; }
 
-    /* Process */
-    .steps{
-      display: grid; gap: 12px;
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .step{
-      padding: 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      position: relative;
-      overflow: hidden;
-    }
-    .step:before{
-      content:"";
-      position:absolute; inset:-40px auto auto -60px;
-      width: 180px; height: 180px; border-radius: 999px;
-      background: radial-gradient(circle at 40% 40%, rgba(34,197,94,.14), transparent 60%);
-      filter: blur(6px);
-      pointer-events: none;
-    }
-    .n{
-      width: 34px; height: 34px;
-      border-radius: 12px;
-      display: inline-flex; align-items: center; justify-content: center;
-      background: rgba(124,58,237,.16);
-      border: 1px solid rgba(124,58,237,.28);
-      font-weight: 750;
-    }
-    .step h4{ margin: 10px 0 6px; font-size: 14px; }
-    .step p{ margin: 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    /* Experience Specific */
+    .exp-item { border-left: 2px solid var(--primary-light); padding-left: 20px; position: relative; margin-bottom: 40px; }
+    .exp-item::before { content: ''; position: absolute; left: -7px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--primary-light); box-shadow: 0 0 10px var(--primary-light); }
+    .exp-meta { font-size: 0.85rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 8px; display: block; }
+    .exp-list { padding-left: 18px; color: var(--text-muted); font-size: 0.95rem; }
+    .exp-list li { margin-bottom: 10px; }
 
-    /* Contact */
-    .contactGrid{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      align-items: start;
-    }
-    form{ display: grid; gap: 10px; }
-    label{ font-size: 13px; color: var(--muted); }
-    input, textarea, select{
-      width: 100%;
-      padding: 12px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      outline: none;
-    }
-    input:focus, textarea:focus, select:focus{
-      border-color: rgba(124,58,237,.55);
-      box-shadow: 0 0 0 4px rgba(124,58,237,.18);
-    }
-    textarea{ min-height: 120px; resize: vertical; }
-    .hint{ color: var(--faint); font-size: 12px; line-height: 1.35; }
+    /* Logos Rail */
+    .logo-rail { display: flex; gap: 40px; align-items: center; padding: 40px 0; opacity: 0.6; filter: grayscale(1) invert(1); overflow-x: auto; }
+    .logo-rail img { height: 35px; }
 
-    .toast{
-      position: fixed; left: 50%; transform: translateX(-50%); bottom: 18px;
-      background: rgba(0,0,0,.65);
-      border: 1px solid rgba(255,255,255,.14);
-      padding: 10px 12px;
-      border-radius: 999px;
-      color: rgba(255,255,255,.92);
-      font-size: 13px;
-      display: none;
-      backdrop-filter: blur(10px);
-      z-index: 99;
-    }
+    footer { padding: 60px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.9rem; }
 
-    /* Footer */
-    footer{
-      padding: 22px 0 34px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      color: var(--muted);
-    }
-    .foot{
-      display: flex; align-items: flex-start; justify-content: space-between;
-      gap: 14px; flex-wrap: wrap;
-    }
-    .small{ font-size: 12px; color: var(--faint); line-height: 1.45; }
-
-    /* Demo / Gradio embed wrapper */
-    .embedWrap{
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 16px;
-      overflow: hidden;
-      background: rgba(255,255,255,.02);
-    }
-    gradio-app{ display:block; width: 100%; min-height: 680px; }
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .heroGrid{ grid-template-columns: 1fr; }
-      .steps{ grid-template-columns: repeat(2, 1fr); }
-      .grid3{ grid-template-columns: 1fr; }
-      .grid2{ grid-template-columns: 1fr; }
-      .contactGrid{ grid-template-columns: 1fr; }
-      gradio-app{ min-height: 740px; }
-    }
-    @media (max-width: 820px){
-      .navlinks{ display: none; }
-      .burger{ display: inline-flex; align-items:center; justify-content:center; }
-      .mobile{ display: block; }
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr; text-align: center; padding: 40px 0; }
+      .hero-content h1 { font-size: 2.5rem; }
+      .btn-group { justify-content: center; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 
 <body>
-  <header class="header">
+
+<header>
+  <div class="container">
+    <div class="nav">
+      <div class="brand">
+        <div class="mark"></div>
+        <span>Luis Alejandro Quimbayo</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#experiencia">Trayectoria</a>
+        <a href="#certificaciones">Certificados de cumplimiento</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="container hero">
+    <div class="hero-content">
+      <div class="kicker"><span style="width:8px; height:8px; background:var(--accent-cyan); border-radius:50%"></span> DISPONIBLE PARA PROYECTOS</div>
+      <h1>Economista - Data Scientist</h1>
+      <p class="hero-p">
+        Transformo datos complejos en decisiones estratégicas. Experto en automatización de pipelines financieros, 
+        modelos de Machine Learning interpretables y Business Intelligence para el sector público y privado.
+      </p>
+      <div class="btn-group">
+        <a href="https://www.linkedin.com/in/luis-alejandro-quimbayo-suarez-89612a160/" target="_blank" class="btn primary">LinkedIn</a>
+        <a href="https://github.com/laquimbayos" target="_blank" class="btn outline">GitHub</a>
+        <a href="#contacto" class="btn outline">Contacto</a>
+      </div>
+    </div>
+    
+    <div class="card side-card" style="background: linear-gradient(135deg, rgba(37,99,235,0.1) 0%, transparent 100%);">
+      <h3 style="margin-top:0">Perfil Core</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted)">
+        <b>Maestría en Analytics</b><br>Uniandes<br><br>
+	<b>Economía</b><br>Universidad Nacional de Colombia<br><br>
+	<b>Contaduría Pública</b><br>Universidad Nacional de Colombia<br><br>
+        <b>Idiomas:</b><br>
+        ES (Nativo) · EN (B1) · DE (A2)<br><br>
+        <b>Especialidad:</b><br>
+        Finanzas públicas, Sector Educación, Finanzas corporativas, Impuestos, Computer Vision (OCR), MLOPs, Machine Learning, Deep Learning, NLP.
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="logo-rail">
+        <img src="https://www.agenciaatenea.gov.co/sites/default/files/inline-images/atenea520.png" alt="Atenea">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Ministerio_de_Hacienda_de_Colombia_2022-2026.png" alt="MinHacienda">
+        <img src="https://colombiafintech.co/wp-content/uploads/2025/04/Captura20de20Pantalla202023-05-1420a20las208550320pm.png" alt="Certicamara", style="opacity: 0.5;">
+    </div>
+  </div>
+
+  <section id="proyectos" style="padding: 60px 0;">
     <div class="container">
-      <div class="nav">
-        <a class="brand" href="#top" aria-label="Inicio">
-          <span class="logo" aria-hidden="true"></span>
-          <span>Nova Data Consulting</span>
+      <div class="section-title">
+        <h2>Proyectos Destacados</h2>
+        <p>Soluciones técnicas con impacto en la eficiencia operativa.</p>
+      </div>
+      
+      <div class="grid">
+        <div class="card">
+          <h3>Computer Vision, NLP & LLM </h3>
+          <p style="font-size:0.9rem; color:var(--text-muted)">Desarrollo de herramienta de deep learning usando YOLO, más integración de OCR + LLM para validación automatizada de documentos (Certificados de residencia, grupos étnicos, facturas de servicios públicos, otros).</p>
+          <div class="tag-container">
+            <span class="tag">Python</span><span class="tag">YOLOv8</span><span class="tag">Tesseract</span><span class="tag">API</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3> Pipelines de consolidación Estadistica </h3>
+          <p style="font-size:0.9rem; color:var(--text-muted)">Automatización de la consolidación de Estadísticas de Finanzas Públicas (EFP) con trazabilidad total.</p>
+          <div class="tag-container">
+            <span class="tag">SQL</span><span class="tag">Pandas</span><span class="tag">ETL</span><span class="tag">Power BI</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Prescriptive Analytics</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted)">Modelado de algoritmos de validación para detección de anomalías y riesgos en procesos de pagos institucionales o transferencias monetarias.</p>
+          <div class="tag-container">
+            <span class="tag">Python</span><span class="tag">ETL</span><span class="tag">BI</span>
+          </div>
+        </div>
+
+       <div class="card">
+          <h3> Predictive Analytics </h3>
+          <p style="font-size:0.9rem; color:var(--text-muted)">Modelar algoritmos para pronosticar la deserción y matricula de estudiantes de educación superior bajo programas de politica pública en Bogotá D.C.</p>
+          <div class="tag-container">
+            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Cluster Analysis</span><span class="tag">Machine Learning</span>
+          </div>
+        </div>
+
+      <div class="card">
+  <h3>Automated Pre-Invoicing & Pricing Tool</h3>
+  <p style="font-size:0.9rem; color:var(--text-muted)">
+    Desarrollo de aplicaciones en local para el cruce de bases de datos,
+    cálculo de precios según consumo y generación automática de prefacturas.
+  </p>
+  <div class="tag-container">
+    <span class="tag">Python</span>
+    <span class="tag">Excel Macros</span>
+    <span class="tag">Data Integration</span>
+    <span class="tag">Business Rules</span>
+    <span class="tag">Automation</span>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Privacidad Diferencial (Differential Privacy)</h3>
+  <p style="font-size:0.9rem; color:var(--text-muted)">
+    Implementación de herramientas de privacidad diferencial para proteger bases de datos sensibles,
+    reduciendo el riesgo de reidentificación mediante la adición controlada de ruido y mecanismos de
+    publicación segura de estadísticas, manteniendo utilidad analítica para toma de decisiones.
+  </p>
+  <div class="tag-container">
+    <span class="tag">Differential Privacy</span>
+    <span class="tag">Python</span>
+    <span class="tag">Data Security</span>
+    <span class="tag">Statistical Disclosure Control</span>
+  </div>
+</div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <section id="experiencia" style="padding: 60px 0; background: rgba(255,255,255,0.02);">
+    <div class="container">
+      <div class="section-title">
+        <h2>Trayectoria Profesional</h2>
+      </div>
+
+      <div class="exp-item">
+        <span class="exp-meta"> 2025 · Certicamara</span>
+        <h3 style="margin:0">Consultor en analitica de datos</h3>
+        <ul class="exp-list">
+          <li>Generar herramientas analiticas para cruce de bases de datos.</li>
+          <li>Desarrollo de aplicaciones en python o Macros VBA para generar prefacturas en PDF.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <span class="exp-meta">2024 — 2025 · Ministerio de Hacienda y Crédito Público</span>
+        <h3 style="margin:0">Analista de Datos / Economista</h3>
+        <ul class="exp-list">
+          <li>Optimización de pipelines de transformación económica.</li>
+          <li>Desarrollo de modelos de datos en Power BI para seguimiento presupuestal.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <span class="exp-meta">2023 — 2025 · Agencia Atenea</span>
+        <h3 style="margin:0">Data Scientist</h3>
+        <ul class="exp-list">
+          <li>Liderazgo técnico en la automatización de validación de documentos mediante IA.</li>
+          <li>Implementación de tableros de control para la dispersión de pagos de programas educativos.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <span class="exp-meta">2022 — 2023 · Dichter & Neira</span>
+        <h3 style="margin:0">Ejecutivo de investigación</h3>
+        <ul class="exp-list">
+          <li>Análisis de datos de estudios de mercado en Centroamérica para apoyar la toma de decisiones estratégicas del área de mercadeo de P&G.</li>
+           </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="certificaciones" style="padding: 60px 0;">
+    <div class="container">
+      <div class="grid" style="grid-template-columns: 1fr 1fr;">
+
+        <div class="card">
+  <h3>Certificaciones</h3>
+
+  <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom:10px;">
+    Principales credenciales en IA/ML y evaluación de impacto.
+  </p>
+
+  <div style="display:grid; gap:10px;">
+    <!-- DataCamp Track 1 -->
+    <div style="border:1px solid var(--border); border-radius:12px; padding:12px;">
+      <b>Associate AI Engineer for Data Scientists</b>
+      <div style="font-size:0.88rem; color:var(--text-muted); margin-top:6px;">
+        DataCamp · Track Certificate
+      </div>
+      <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="tag" href="https://www.datacamp.com/statement-of-accomplishment/track/73721ace7917aa8c824a300cbaaaa93700adc893?raw=1"
+           target="_blank" rel="noopener" style="text-decoration:none; display:inline-block;">
+          Ver certificado →
         </a>
-
-        <nav class="navlinks" aria-label="Navegación">
-          <a href="#servicios">Servicios</a>
-          <a href="#casos">Casos</a>
-          <a href="#demo">Demo</a>
-          <a href="#proceso">Proceso</a>
-          <a href="#equipo">Equipo</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
-
-        <div class="navcta">
-          <a class="btn ghost" href="#contacto" title="Cotizar">
-            <span>Agenda 15 min</span>
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M7 17L17 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M10 7h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </span>
-          </a>
-          <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="mobile" id="mobile" style="display:none;">
-        <div class="panel">
-          <a href="#servicios">Servicios</a>
-          <a href="#casos">Casos</a>
-          <a href="#demo">Demo</a>
-          <a href="#proceso">Proceso</a>
-          <a href="#equipo">Equipo</a>
-          <a href="#contacto">Contacto</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main id="top">
-    <div class="container hero">
-      <div class="heroGrid">
-        <div class="card heroMain">
-          <div class="spark" aria-hidden="true"></div>
-          <span class="chip"><span class="dot"></span>De datos a decisiones en semanas</span>
-          <h1>Consultoría en ciencia de datos, analítica e IA aplicada</h1>
-          <p>
-            Implementamos modelos predictivos, automatización y tableros ejecutivos con enfoque en impacto:
-            menos fricción operativa, mejores decisiones y trazabilidad de punta a punta.
-          </p>
-
-          <div class="heroActions">
-            <a class="btn primary" href="#contacto">
-              <span>Solicitar diagnóstico</span>
-              <span class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M20 12H4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M14 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </span>
-            </a>
-            <a class="btn" href="#casos">
-              <span>Ver casos</span>
-              <span class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M4 12a8 8 0 1016 0 8 8 0 10-16 0z" stroke="currentColor" stroke-width="2"/>
-                  <path d="M10 8l6 4-6 4V8z" fill="currentColor"/>
-                </svg>
-              </span>
-            </a>
-            <button class="btn" id="copyEmail" type="button" title="Copiar email">
-              <span>Copiar email</span>
-              <span class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M9 9h10v10H9V9z" stroke="currentColor" stroke-width="2" />
-                  <path d="M5 15H5a2 2 0 01-2-2V5a2 2 0 012-2h8a2 2 0 012 2v0" stroke="currentColor" stroke-width="2"/>
-                </svg>
-              </span>
-            </button>
-            <a class="btn" href="#demo" title="Probar demo">
-              <span>Probar demo OCR</span>
-              <span class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M4 12a8 8 0 1016 0 8 8 0 10-16 0z" stroke="currentColor" stroke-width="2"/>
-                  <path d="M10 8l6 4-6 4V8z" fill="currentColor"/>
-                </svg>
-              </span>
-            </a>
-          </div>
-
-          <div class="heroMeta">
-            <span class="chip" style="padding:8px 10px;">
-              <span class="dot" style="box-shadow:none;"></span>
-              <span><b style="color:rgba(255,255,255,.92)">Stack</b>: Python · SQL · Power BI · ML · MLOps</span>
-            </span>
-            <span class="chip" style="padding:8px 10px;">
-              <span class="dot" style="box-shadow:none;background:linear-gradient(90deg,var(--accent2),var(--warn));"></span>
-              <span><b style="color:rgba(255,255,255,.92)">Entrega</b>: pilotos en 2–4 semanas</span>
-            </span>
-          </div>
-        </div>
-
-        <aside class="card heroSide">
-          <div class="statGrid">
-            <div class="stat">
-              <div class="k">+30%</div>
-              <div class="v">Reducción típica de tiempo en procesos repetitivos con automatización</div>
-            </div>
-            <div class="stat">
-              <div class="k">+15pp</div>
-              <div class="v">Mejora típica en métricas de calidad (validación, detección, clasificación)</div>
-            </div>
-            <div class="stat">
-              <div class="k">&lt; 1h</div>
-              <div class="v">Setup de un prototipo funcional (demo) para alinear expectativas</div>
-            </div>
-            <div class="stat">
-              <div class="k">E2E</div>
-              <div class="v">Pipeline completo: ingestión → modelo → monitoreo → tablero</div>
-            </div>
-          </div>
-          <div class="mini">
-            <b>Lo que entregamos</b>: código, documentación, tableros y handover. <br/>
-            <b>Enfoque</b>: resultados medibles + gobernanza de datos.
-          </div>
-        </aside>
       </div>
     </div>
 
-    <section id="servicios">
-      <div class="container">
-        <div class="sectionHead">
-          <div>
-            <h2>Servicios</h2>
-            <p>Paquetes típicos para acelerar implementación sin perder control: diagnóstico, piloto y escalamiento.</p>
-          </div>
-          <a class="btn" href="#contacto">Pedir propuesta</a>
-        </div>
-
-        <div class="grid3">
-          <div class="panel">
-            <div class="badge"><span class="pill"></span>Analítica & BI</div>
-            <h3>Tableros ejecutivos y KPIs</h3>
-            <p>Modelado de datos, métricas consistentes y tableros listos para gestión.</p>
-            <div class="list">
-              <div class="li">
-                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                <span>Modelo estrella, diccionario de datos, refresh y control de calidad</span>
-              </div>
-              <div class="li">
-                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                <span>Power BI / Looker / Metabase (según necesidad)</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel">
-            <div class="badge"><span class="pill"></span>Machine Learning</div>
-            <h3>Modelos predictivos y ML aplicado</h3>
-            <p>Predicción, clasificación, scoring y segmentación con validación rigurosa.</p>
-            <div class="list">
-              <div class="li">
-                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                <span>Entrenamiento + evaluación (AUC, F1, RMSE, calibración)</span>
-              </div>
-              <div class="li">
-                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                <span>Interpretabilidad (SHAP), fairness y trazabilidad</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel">
-            <div class="badge"><span class="pill"></span>Automatización & MLOps</div>
-            <h3>Procesos automatizados end-to-end</h3>
-            <p>De notebook a producto: jobs, APIs, monitoreo y control de cambios.</p>
-            <div class="list">
-              <div class="li">
-                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                <span>ETL/ELT, validaciones, alertas y reportes</span>
-              </div>
-              <div class="li">
-                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                <span>CI/CD, versionado, pruebas, monitoreo y drift</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
+    <!-- DataCamp Track 2 -->
+    <div style="border:1px solid var(--border); border-radius:12px; padding:12px;">
+      <b>Machine Learning Scientist in Python</b>
+      <div style="font-size:0.88rem; color:var(--text-muted); margin-top:6px;">
+        DataCamp · Track Certificate
       </div>
-    </section>
-
-    <section id="casos">
-      <div class="container">
-        <div class="sectionHead">
-          <div>
-            <h2>Casos (ejemplos)</h2>
-            <p>Resultados típicos. Puedes ajustar la narrativa para tu prueba y tu portafolio.</p>
-          </div>
-        </div>
-
-        <div class="grid2">
-          <div class="case">
-            <div class="caseTop">
-              <div>
-                <h3>Validación documental con OCR + reglas</h3>
-                <p>Extracción de campos (dirección, ID, fechas) y validación automática con trazabilidad.</p>
-              </div>
-              <span class="tag">2–3 semanas</span>
-            </div>
-            <div class="tags">
-              <span class="tag">Tesseract</span>
-              <span class="tag">Python</span>
-              <span class="tag">Regex + scoring</span>
-              <span class="tag">Auditoría</span>
-            </div>
-          </div>
-
-          <div class="case">
-            <div class="caseTop">
-              <div>
-                <h3>Modelo de riesgo / scoring</h3>
-                <p>Clasificación con calibración, SHAP y monitoreo para operación recurrente.</p>
-              </div>
-              <span class="tag">4–6 semanas</span>
-            </div>
-            <div class="tags">
-              <span class="tag">XGBoost</span>
-              <span class="tag">SHAP</span>
-              <span class="tag">MLOps</span>
-              <span class="tag">A/B</span>
-            </div>
-          </div>
-
-          <div class="case">
-            <div class="caseTop">
-              <div>
-                <h3>Pronóstico + simulación</h3>
-                <p>Forecast y escenarios (Monte Carlo) para planificación y presupuesto.</p>
-              </div>
-              <span class="tag">3–5 semanas</span>
-            </div>
-            <div class="tags">
-              <span class="tag">ARIMA/Prophet</span>
-              <span class="tag">GBM</span>
-              <span class="tag">Backtesting</span>
-            </div>
-          </div>
-
-          <div class="case">
-            <div class="caseTop">
-              <div>
-                <h3>Tablero de desempeño operativo</h3>
-                <p>KPIs, segmentaciones y automatización de refresco con control de calidad.</p>
-              </div>
-              <span class="tag">2–4 semanas</span>
-            </div>
-            <div class="tags">
-              <span class="tag">Power BI</span>
-              <span class="tag">SQL</span>
-              <span class="tag">ETL</span>
-            </div>
-          </div>
-        </div>
-
+      <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="tag" href="https://www.datacamp.com/statement-of-accomplishment/track/9ce10992f640ca05a80af19ab64c59d23ade11d5?raw=1"
+           target="_blank" rel="noopener" style="text-decoration:none; display:inline-block;">
+          Ver certificado →
+        </a>
       </div>
-    </section>
+    </div>
 
-    <!-- ===================== DEMO SECTION (EMBED HF SPACE) ===================== -->
-    <section id="demo">
-      <div class="container">
-        <div class="sectionHead">
-          <div>
-            <h2>Prueba una de nuestras soluciones</h2>
-            <p>Demo OCR embebida: sube un PDF o una imagen y observa el resultado sin salir de esta página.</p>
-          </div>
-          <a class="btn" href="#contacto">Quiero implementarlo</a>
-        </div>
-
-        <div class="panel" style="padding:14px;">
-          <div class="embedWrap">
-            <!-- Cambia el src por TU Space cuando tengas el tuyo -->
-            <gradio-app src="https://prithivmlmods-multimodal-ocr.hf.space"></gradio-app>
-          </div>
-          <div class="hint" style="margin-top:10px;">
-            Nota: el procesamiento ocurre en Hugging Face (backend externo). Esta página solo embebe la interfaz.
-          </div>
-        </div>
+    <!-- Uniandes -->
+    <div style="border:1px solid var(--border); border-radius:12px; padding:12px;">
+      <b>Evaluación de Impacto</b>
+      <div style="font-size:0.88rem; color:var(--text-muted); margin-top:6px;">
+        Universidad de los Andes · Certificado
       </div>
-    </section>
-
-    <section id="proceso">
-      <div class="container">
-        <div class="sectionHead">
-          <div>
-            <h2>Proceso</h2>
-            <p>Una forma simple de trabajar que reduce riesgos: claridad, piloto rápido y escalamiento con control.</p>
-          </div>
-        </div>
-
-        <div class="steps">
-          <div class="step">
-            <div class="n">1</div>
-            <h4>Diagnóstico</h4>
-            <p>Objetivo, datos disponibles, restricciones y criterios de éxito medibles.</p>
-          </div>
-          <div class="step">
-            <div class="n">2</div>
-            <h4>Piloto</h4>
-            <p>Prototipo funcional, validación con usuarios y métricas baseline vs mejora.</p>
-          </div>
-          <div class="step">
-            <div class="n">3</div>
-            <h4>Producción</h4>
-            <p>Pipeline, pruebas, automatización, seguridad y documentación.</p>
-          </div>
-          <div class="step">
-            <div class="n">4</div>
-            <h4>Monitoreo</h4>
-            <p>Alertas, deriva, calidad de datos y mejoras iterativas.</p>
-          </div>
-        </div>
+      <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="tag" href="https://wallet.xertify.co/certificates/D47BFBF3C002"
+           target="_blank" rel="noopener" style="text-decoration:none; display:inline-block;">
+          Ver certificado →
+        </a>
       </div>
-    </section>
+    </div>
 
-    <section id="equipo">
-      <div class="container">
-        <div class="sectionHead">
-          <div>
-            <h2>Equipo</h2>
-            <p>Perfil orientado a ejecución: ingeniería de datos, modelamiento, producto analítico y adopción.</p>
-          </div>
-        </div>
-
-        <div class="grid3">
-          <div class="panel">
-            <div class="badge"><span class="pill"></span>Data Engineering</div>
-            <h3>Datos confiables</h3>
-            <p>Conectores, calidad, modelos de datos y performance para operación continua.</p>
-          </div>
-          <div class="panel">
-            <div class="badge"><span class="pill"></span>Data Science</div>
-            <h3>Modelos con control</h3>
-            <p>Validación, interpretabilidad, evaluación y documentación reproducible.</p>
-          </div>
-          <div class="panel">
-            <div class="badge"><span class="pill"></span>Delivery</div>
-            <h3>Entrega y adopción</h3>
-            <p>Handover, capacitación, soporte inicial y roadmap realista.</p>
-          </div>
-        </div>
-
+    <!-- DataCamp Portfolio -->
+    <div style="border:1px dashed var(--border); border-radius:12px; padding:12px; background: rgba(0,0,0,0.02);">
+      <b>Portafolio DataCamp</b>
+      <div style="font-size:0.88rem; color:var(--text-muted); margin-top:6px;">
+        Cursos, rutas finalizadas y credenciales adicionales.
       </div>
-    </section>
-
-    <section id="contacto">
-      <div class="container">
-        <div class="sectionHead">
-          <div>
-            <h2>Contacto</h2>
-            <p>Deja datos básicos. Este formulario es de demostración (no envía). Puedes conectarlo a Formspree/Google Forms luego.</p>
-          </div>
-        </div>
-
-        <div class="contactGrid">
-          <div class="panel">
-            <h3>Agenda un diagnóstico</h3>
-            <p>Cuéntanos el caso (1–2 párrafos). Te respondemos con un plan de piloto, alcance y estimación.</p>
-            <div class="list" style="margin-top:14px;">
-              <div class="li">
-                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                <span><b style="color:rgba(255,255,255,.92)">Email:</b> <span id="emailText">contacto@novadata.consulting</span></span>
-              </div>
-              <div class="li">
-                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M7 2h10v4H7V2zM5 6h14v16H5V6z" stroke="currentColor" stroke-width="2"/></svg>
-                <span><b style="color:rgba(255,255,255,.92)">Entregables:</b> código + tablero + documentación</span>
-              </div>
-              <div class="li">
-                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 8v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 12a8 8 0 1016 0 8 8 0 10-16 0z" stroke="currentColor" stroke-width="2"/></svg>
-                <span><b style="color:rgba(255,255,255,.92)">Ventana:</b> 2–4 semanas para piloto</span>
-              </div>
-            </div>
-            <div class="mini" style="margin-top:14px;">
-              Tips para tu prueba: cambia el nombre, el correo y los casos. Mantén la estructura.
-            </div>
-          </div>
-
-          <div class="panel">
-            <h3>Formulario (demo)</h3>
-            <form id="leadForm" novalidate>
-              <div>
-                <label for="name">Nombre</label>
-                <input id="name" name="name" placeholder="Tu nombre" required />
-              </div>
-              <div>
-                <label for="company">Empresa</label>
-                <input id="company" name="company" placeholder="Tu empresa" />
-              </div>
-              <div>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="correo@empresa.com" required />
-              </div>
-              <div>
-                <label for="topic">Qué necesitas</label>
-                <select id="topic" name="topic">
-                  <option value="bi">BI / Tableros</option>
-                  <option value="ml">Machine Learning</option>
-                  <option value="automation">Automatización / MLOps</option>
-                  <option value="ocr">OCR / Documentos</option>
-                  <option value="other">Otro</option>
-                </select>
-              </div>
-              <div>
-                <label for="msg">Mensaje</label>
-                <textarea id="msg" name="msg" placeholder="Describe brevemente el caso y el objetivo..." required></textarea>
-              </div>
-
-              <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-                <button class="btn primary" type="submit">Guardar (demo)</button>
-                <button class="btn" type="button" id="fillDemo">Autollenar ejemplo</button>
-              </div>
-
-              <div class="hint" id="formHint">
-                Este formulario no envía datos. En producción puedes conectarlo a un endpoint o proveedor de formularios.
-              </div>
-            </form>
-          </div>
-        </div>
-
+      <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="tag" href="https://www.datacamp.com/portfolio/laquimbayos-e8d0a79f-1af3-40ad-97c4-69c3a6ff5488"
+           target="_blank" rel="noopener" style="text-decoration:none; display:inline-block;">
+          Ver portafolio →
+        </a>
       </div>
-    </section>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </section>
 
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="foot">
-        <div>
-          <div class="brand" style="margin-bottom:10px;">
-            <span class="logo" aria-hidden="true" style="width:34px;height:34px;border-radius:12px;"></span>
-            <span>Nova Data Consulting</span>
-          </div>
-          <div class="small">
-            © <span id="year"></span> · Sitio de ejemplo para GitHub Pages ·
-            <span style="color:rgba(255,255,255,.78)">Ciencia de Datos · IA · BI</span>
-          </div>
-        </div>
-
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn" href="#top">Inicio</a>
-          <a class="btn" href="#servicios">Servicios</a>
-          <a class="btn" href="#demo">Demo</a>
-          <a class="btn" href="#contacto">Contacto</a>
+  <section id="contacto" style="padding: 80px 0;">
+    <div class="container" style="text-align: center;">
+      <div class="card" style="max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);">
+        <h2 style="margin-top:0">¿Hablamos de datos?</h2>
+        <p style="color: rgba(255,255,255,0.8)">Disponible para consultorías de automatización y roles senior en Data Science.</p>
+        <div class="btn-group" style="justify-content: center; margin-top: 20px;">
+          <a href="mailto:laquimbayos@gmail.com" class="btn primary" style="background: white; color: var(--primary);">Email</a>
+          <a href="https://www.linkedin.com/in/luis-alejandro-quimbayo-suarez-89612a160/" target="_blank" class="btn outline" style="border-color: white;">LinkedIn</a>
         </div>
       </div>
     </div>
-  </footer>
+  </section>
+</main>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> · Luis Alejandro Quimbayo · Data Science & Analytics · laquimbayos@gmail.com </p>
+  </div>
+</footer>
 
-  <!-- Gradio embed (needed for <gradio-app>) -->
-  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/5.49.1/gradio.js"></script>
-
-  <script>
-    // Smooth scroll for in-page links
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", (e) => {
-        const id = a.getAttribute("href");
-        const el = document.querySelector(id);
-        if (!el) return;
-        e.preventDefault();
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-        // close mobile menu
-        const mobile = document.getElementById("mobile");
-        const burger = document.getElementById("burger");
-        if (mobile && burger && mobile.style.display !== "none") {
-          mobile.style.display = "none";
-          burger.setAttribute("aria-expanded", "false");
-        }
-        history.replaceState(null, "", id);
-      });
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  
+  // Efecto sutil de revelación al hacer scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translateY(0)";
+      }
     });
+  }, { threshold: 0.1 });
 
-    // Mobile menu toggle
-    const burger = document.getElementById("burger");
-    const mobile = document.getElementById("mobile");
-    if (burger && mobile) {
-      burger.addEventListener("click", () => {
-        const open = mobile.style.display !== "none";
-        mobile.style.display = open ? "none" : "block";
-        burger.setAttribute("aria-expanded", String(!open));
-      });
-    }
+  document.querySelectorAll('.card, .exp-item').forEach(el => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(20px)";
+    el.style.transition = "all 0.6s ease-out";
+    observer.observe(el);
+  });
+</script>
 
-    // Toast helper
-    const toast = document.getElementById("toast");
-    let toastTimer = null;
-    function showToast(msg) {
-      if (!toast) return;
-      toast.textContent = msg;
-      toast.style.display = "block";
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => { toast.style.display = "none"; }, 2400);
-    }
-
-    // Copy email button
-    const copyEmailBtn = document.getElementById("copyEmail");
-    const emailText = document.getElementById("emailText");
-    if (copyEmailBtn && emailText) {
-      copyEmailBtn.addEventListener("click", async () => {
-        const email = emailText.textContent.trim();
-        try {
-          await navigator.clipboard.writeText(email);
-          showToast("Email copiado: " + email);
-        } catch {
-          // Fallback
-          const tmp = document.createElement("input");
-          tmp.value = email;
-          document.body.appendChild(tmp);
-          tmp.select();
-          document.execCommand("copy");
-          tmp.remove();
-          showToast("Email copiado: " + email);
-        }
-      });
-    }
-
-    // Demo form behavior (no submission)
-    const form = document.getElementById("leadForm");
-    const fillDemo = document.getElementById("fillDemo");
-    if (fillDemo) {
-      fillDemo.addEventListener("click", () => {
-        document.getElementById("name").value = "Alejandro Quimbayo";
-        document.getElementById("company").value = "Empresa ejemplo";
-        document.getElementById("email").value = "alejandro@ejemplo.com";
-        document.getElementById("topic").value = "ocr";
-        document.getElementById("msg").value = "Necesito extraer dirección de facturas (PDF escaneados) con OCR + validación. Volumen: 2.000 docs/mes. Requiero auditoría y reporte.";
-        showToast("Formulario autollenado.");
-      });
-    }
-
-    function isEmailValid(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    if (form) {
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const msg = document.getElementById("msg").value.trim();
-
-        if (!name || !email || !msg) {
-          showToast("Completa nombre, email y mensaje.");
-          return;
-        }
-        if (!isEmailValid(email)) {
-          showToast("Email inválido.");
-          return;
-        }
-        showToast("Guardado (demo). Conecta un backend para enviar.");
-      });
-    }
-
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
