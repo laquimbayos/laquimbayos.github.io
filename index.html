@@ -24,7 +24,12 @@
       --border: rgba(255, 255, 255, 0.1);
     }
 
-    * { box-sizing: border-box; scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
+    
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
 
     body {
       margin: 0;
@@ -50,18 +55,18 @@
     .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
     .mark { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); box-shadow: 0 0 20px rgba(37,99,235,0.4); }
     .nav-links { display: flex; gap: 20px; }
-    .nav-links a { font-size: 0.85rem; color: var(--text-muted); transition: 0.3s; font-weight: 500; }
+    .nav-links a { font-size: 0.85rem; color: var(--text-muted); transition: 0.3s; font-weight: 500; text-decoration: none; }
     .nav-links a:hover { color: var(--accent-cyan); }
 
     /* Hero Section */
-    .hero { padding: 80px 0 40px; display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 30px; align-items: center; }
+    .hero { padding: 80px 0 40px; display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 30px; align-items: start; }
     .hero-content h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin: 20px 0; font-weight: 800; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .kicker { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: var(--glass); border: 1px solid var(--border); border-radius: 100px; color: var(--accent-cyan); font-size: 0.8rem; font-weight: 600; }
     .hero-p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin-bottom: 30px; }
 
     /* Buttons */
     .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn { padding: 12px 24px; border-radius: 12px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; cursor: pointer; border: 1px solid var(--border); display: inline-flex; align-items: center; gap: 8px; }
+    .btn { padding: 12px 24px; border-radius: 12px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; cursor: pointer; border: 1px solid var(--border); display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
     .btn.primary { background: var(--primary-light); color: white; border: none; box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
     .btn.primary:hover { background: #3b82f6; transform: translateY(-2px); }
     .btn.outline { background: var(--glass); color: white; }
@@ -69,14 +74,14 @@
 
     /* Cards & Grids */
     .section-title { margin-bottom: 40px; }
-    .section-title h2 { font-size: 2rem; margin: 0; }
+    .section-title h2 { font-size: 2.2rem; margin: 0; }
     .section-title p { color: var(--text-muted); margin: 8px 0 0; }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 28px; transition: 0.4s; position: relative; overflow: hidden; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 28px; transition: 0.4s; position: relative; overflow: hidden; display: flex; flex-direction: column; }
     .card:hover { border-color: var(--primary-light); transform: translateY(-5px); background: rgba(30, 41, 59, 0.9); }
     
-    .tag-container { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+    .tag-container { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 20px; }
     .tag { font-size: 11px; padding: 4px 10px; border-radius: 6px; background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.2); font-weight: 600; }
 
     /* Experience Specific */
@@ -87,8 +92,8 @@
     .exp-list li { margin-bottom: 10px; }
 
     /* Logos Rail */
-    .logo-rail { display: flex; gap: 40px; align-items: center; padding: 40px 0; opacity: 0.6; filter: grayscale(1) invert(1); overflow-x: auto; }
-    .logo-rail img { height: 35px; }
+    .logo-rail { display: flex; gap: 60px; align-items: center; padding: 40px 0; opacity: 0.6; filter: grayscale(1) invert(1); overflow-x: auto; justify-content: center; }
+    .logo-rail img { height: 40px; object-fit: contain; }
 
     footer { padding: 60px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.9rem; }
 
@@ -97,6 +102,7 @@
       .hero-content h1 { font-size: 2.5rem; }
       .btn-group { justify-content: center; }
       .nav-links { display: none; }
+      .logo-rail { justify-content: flex-start; }
     }
   </style>
 </head>
@@ -113,7 +119,7 @@
       <nav class="nav-links">
         <a href="#proyectos">Proyectos</a>
         <a href="#experiencia">Trayectoria</a>
-        <a href="#certificaciones">Certificados de cumplimiento</a>
+        <a href="#certificaciones">Certificaciones</a>
         <a href="#contacto">Contacto</a>
       </nav>
     </div>
@@ -123,7 +129,10 @@
 <main>
   <section class="container hero">
     <div class="hero-content">
-      <div class="kicker"><span style="width:8px; height:8px; background:var(--accent-cyan); border-radius:50%"></span> DISPONIBLE PARA PROYECTOS</div>
+      <div class="kicker">
+        <span style="width:8px; height:8px; background:var(--accent-cyan); border-radius:50%"></span> 
+        DISPONIBLE PARA PROYECTOS
+      </div>
       <h1>Economista - Data Scientist</h1>
       <p class="hero-p">
         Transformo datos complejos en decisiones estratégicas. Experto en automatización de pipelines financieros, 
@@ -132,119 +141,107 @@
       <div class="btn-group">
         <a href="https://www.linkedin.com/in/luis-alejandro-quimbayo-suarez-89612a160/" target="_blank" class="btn primary">LinkedIn</a>
         <a href="https://github.com/laquimbayos" target="_blank" class="btn outline">GitHub</a>
-        <a href="#contacto" class="btn outline">Contacto</a>
+        <a href="#" class="btn outline">DataCamp</a>
       </div>
     </div>
     
     <div class="card side-card" style="background: linear-gradient(135deg, rgba(37,99,235,0.1) 0%, transparent 100%);">
-      <h3 style="margin-top:0">Perfil Core</h3>
-      <p style="font-size: 0.9rem; color: var(--text-muted)">
-        <b>Maestría en Analytics</b><br>Uniandes<br><br>
-	<b>Economía</b><br>Universidad Nacional de Colombia<br><br>
-	<b>Contaduría Pública</b><br>Universidad Nacional de Colombia<br><br>
-        <b>Idiomas:</b><br>
+      <h3 style="margin-top:0; color: var(--accent-cyan);">Perfil Core</h3>
+      <p style="font-size: 0.9rem; color: var(--text-main)">
+        <strong>Maestría en Analytics</strong><br><span style="color:var(--text-muted)">Universidad de los Andes</span><br><br>
+        <strong>Economía</strong><br><span style="color:var(--text-muted)">Universidad Nacional de Colombia</span><br><br>
+        <strong>Contaduría Pública</strong><br><span style="color:var(--text-muted)">Universidad Nacional de Colombia</span><br><br>
+        <strong style="color: var(--accent-cyan);">Idiomas:</strong><br>
         ES (Nativo) · EN (B1) · DE (A2)<br><br>
-        <b>Especialidad:</b><br>
-        Finanzas públicas, Sector Educación, Finanzas corporativas, Impuestos, Computer Vision (OCR), MLOPs, Machine Learning, Deep Learning, NLP.
+        <strong style="color: var(--accent-cyan);">Especialidad:</strong><br>
+        <span style="font-size: 0.85rem; color: var(--text-muted)">Finanzas públicas, Computer Vision (OCR), MLOps, Machine Learning, NLP.</span>
       </p>
     </div>
   </section>
 
-  <div class="container">
+  <div class="container" style="padding: 40px 0; border-top: 1px solid var(--border);">
+    <p style="text-align:center; font-size:0.8rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px; margin-bottom:20px;">Experiencia Institucional</p>
     <div class="logo-rail">
         <img src="https://www.agenciaatenea.gov.co/sites/default/files/inline-images/atenea520.png" alt="Atenea">
         <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Ministerio_de_Hacienda_de_Colombia_2022-2026.png" alt="MinHacienda">
-        <img src="https://colombiafintech.co/wp-content/uploads/2025/04/Captura20de20Pantalla202023-05-1420a20las208550320pm.png" alt="Certicamara", style="opacity: 0.5;">
+        <img src="https://colombiafintech.co/wp-content/uploads/2025/04/Captura20de20Pantalla202023-05-1420a20las208550320pm.png" alt="Certicamara" style="opacity: 0.8;">
     </div>
   </div>
 
-  <section id="proyectos" style="padding: 60px 0;">
+  <section id="proyectos" style="padding: 80px 0;">
     <div class="container">
       <div class="section-title">
         <h2>Proyectos Destacados</h2>
-        <p>Soluciones técnicas con impacto en la eficiencia operativa.</p>
+        <p>Soluciones técnicas con impacto real en eficiencia operativa.</p>
       </div>
       
       <div class="grid">
         <div class="card">
-          <h3>Computer Vision, NLP & LLM </h3>
-          <p style="font-size:0.9rem; color:var(--text-muted)">Desarrollo de herramienta de deep learning usando YOLO, más integración de OCR + LLM para validación automatizada de documentos (Certificados de residencia, grupos étnicos, facturas de servicios públicos, otros).</p>
+          <h3>Computer Vision, NLP & LLM</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted)">Deep Learning (YOLOv8) + OCR para validación automatizada de certificados y documentos legales con integración de LLMs.</p>
           <div class="tag-container">
             <span class="tag">Python</span><span class="tag">YOLOv8</span><span class="tag">Tesseract</span><span class="tag">API</span>
           </div>
         </div>
 
         <div class="card">
-          <h3> Pipelines de consolidación Estadistica </h3>
-          <p style="font-size:0.9rem; color:var(--text-muted)">Automatización de la consolidación de Estadísticas de Finanzas Públicas (EFP) con trazabilidad total.</p>
+          <h3>Pipelines de Consolidación Estadísicas</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted)">Ajustes a la automatización de la consolidación Estadísticas de Finanzas Públicas (EFP).</p>
           <div class="tag-container">
             <span class="tag">SQL</span><span class="tag">Pandas</span><span class="tag">ETL</span><span class="tag">Power BI</span>
           </div>
         </div>
 
         <div class="card">
+          <h3>Predictive Analytics</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted)">Modelado de algoritmos para pronosticar deserción escolar en programas de política pública en Bogotá D.C.</p>
+          <div class="tag-container">
+            <span class="tag">Python</span><span class="tag">Cluster Analysis</span><span class="tag">ML</span>
+          </div>
+        </div>
+
+      <div class="card">
           <h3>Prescriptive Analytics</h3>
-          <p style="font-size:0.9rem; color:var(--text-muted)">Modelado de algoritmos de validación para detección de anomalías y riesgos en procesos de pagos institucionales o transferencias monetarias.</p>
+          <p style="font-size:0.9rem; color:var(--text-muted)">Modelado de algoritmos de validación para detección de anomalías y riesgos en procesos de pagos institucionales o transferencias monetarias./p>
           <div class="tag-container">
             <span class="tag">Python</span><span class="tag">ETL</span><span class="tag">BI</span>
           </div>
         </div>
 
-       <div class="card">
-          <h3> Predictive Analytics </h3>
-          <p style="font-size:0.9rem; color:var(--text-muted)">Modelar algoritmos para pronosticar la deserción y matricula de estudiantes de educación superior bajo programas de politica pública en Bogotá D.C.</p>
+        <div class="card">
+          <h3>Privacidad Diferencial</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted)">Implementación de mecanismos de seguridad estadística para proteger bases de datos sensibles sin perder utilidad analítica.</p>
           <div class="tag-container">
-            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Cluster Analysis</span><span class="tag">Machine Learning</span>
+            <span class="tag">Python</span><span class="tag">Data Security</span><span class="tag">Statistics</span>
           </div>
         </div>
 
       <div class="card">
-  <h3>Automated Pre-Invoicing & Pricing Tool</h3>
-  <p style="font-size:0.9rem; color:var(--text-muted)">
-    Desarrollo de aplicaciones en local para el cruce de bases de datos,
-    cálculo de precios según consumo y generación automática de prefacturas.
-  </p>
-  <div class="tag-container">
-    <span class="tag">Python</span>
-    <span class="tag">Excel Macros</span>
-    <span class="tag">Data Integration</span>
-    <span class="tag">Business Rules</span>
-    <span class="tag">Automation</span>
-  </div>
-</div>
-
-<div class="card">
-  <h3>Privacidad Diferencial (Differential Privacy)</h3>
-  <p style="font-size:0.9rem; color:var(--text-muted)">
-    Implementación de herramientas de privacidad diferencial para proteger bases de datos sensibles,
-    reduciendo el riesgo de reidentificación mediante la adición controlada de ruido y mecanismos de
-    publicación segura de estadísticas, manteniendo utilidad analítica para toma de decisiones.
-  </p>
-  <div class="tag-container">
-    <span class="tag">Differential Privacy</span>
-    <span class="tag">Python</span>
-    <span class="tag">Data Security</span>
-    <span class="tag">Statistical Disclosure Control</span>
-  </div>
-</div>
+          <h3>Pre-Invoicing & Pricing Tool</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted)">Desarrollo de aplicaciones en local para el cruce de bases de datos,
+    cálculo de precios según consumo y generación automática de prefacturas.</p>
+          <div class="tag-container">
+            <span class="tag">Python</span><span class="tag">Excel Macros</span><span class="tag">Business Rules</span>
+          </div>
+        </div>
 
 
       </div>
     </div>
   </section>
 
-  <section id="experiencia" style="padding: 60px 0; background: rgba(255,255,255,0.02);">
+  <section id="experiencia" style="padding: 80px 0; background: rgba(255,255,255,0.02);">
     <div class="container">
       <div class="section-title">
         <h2>Trayectoria Profesional</h2>
       </div>
 
       <div class="exp-item">
-        <span class="exp-meta"> 2025 · Certicamara</span>
-        <h3 style="margin:0">Consultor en analitica de datos</h3>
+        <span class="exp-meta">2025 — Actualidad · Certicamara</span>
+        <h3 style="margin:0">Consultor en Analítica de Datos</h3>
         <ul class="exp-list">
-          <li>Generar herramientas analiticas para cruce de bases de datos.</li>
-          <li>Desarrollo de aplicaciones en python o Macros VBA para generar prefacturas en PDF.</li>
+          <li>Desarrollo de herramientas analíticas para el cruce masivo de bases de datos.</li>
+          <li>Automatización de procesos de facturación mediante Python y VBA.</li>
         </ul>
       </div>
 
@@ -252,8 +249,8 @@
         <span class="exp-meta">2024 — 2025 · Ministerio de Hacienda y Crédito Público</span>
         <h3 style="margin:0">Analista de Datos / Economista</h3>
         <ul class="exp-list">
-          <li>Optimización de pipelines de transformación económica.</li>
-          <li>Desarrollo de modelos de datos en Power BI para seguimiento presupuestal.</li>
+          <li>Optimización de pipelines de transformación para reportes económicos nacionales.</li>
+          <li>Desarrollo de dashboards en Power BI para monitoreo presupuestal en tiempo real.</li>
         </ul>
       </div>
 
@@ -261,103 +258,46 @@
         <span class="exp-meta">2023 — 2025 · Agencia Atenea</span>
         <h3 style="margin:0">Data Scientist</h3>
         <ul class="exp-list">
-          <li>Liderazgo técnico en la automatización de validación de documentos mediante IA.</li>
-          <li>Implementación de tableros de control para la dispersión de pagos de programas educativos.</li>
+          <li>Liderazgo en la automatización de validación documental mediante Inteligencia Artificial.</li>
+          <li>Implementación de modelos de control para dispersión de pagos educativos.</li>
         </ul>
       </div>
-
-      <div class="exp-item">
-        <span class="exp-meta">2022 — 2023 · Dichter & Neira</span>
-        <h3 style="margin:0">Ejecutivo de investigación</h3>
-        <ul class="exp-list">
-          <li>Análisis de datos de estudios de mercado en Centroamérica para apoyar la toma de decisiones estratégicas del área de mercadeo de P&G.</li>
-           </ul>
-      </div>
-
     </div>
   </section>
 
-  <section id="certificaciones" style="padding: 60px 0;">
+  <section id="certificaciones" style="padding: 80px 0;">
     <div class="container">
-      <div class="grid" style="grid-template-columns: 1fr 1fr;">
-
-        <div class="card">
-  <h3>Certificaciones</h3>
-
-  <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom:10px;">
-    Principales credenciales en IA/ML y evaluación de impacto.
-  </p>
-
-  <div style="display:grid; gap:10px;">
-    <!-- DataCamp Track 1 -->
-    <div style="border:1px solid var(--border); border-radius:12px; padding:12px;">
-      <b>Associate AI Engineer for Data Scientists</b>
-      <div style="font-size:0.88rem; color:var(--text-muted); margin-top:6px;">
-        DataCamp · Track Certificate
+      <div class="section-title">
+        <h2>Certificaciones</h2>
       </div>
-      <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="tag" href="https://www.datacamp.com/statement-of-accomplishment/track/73721ace7917aa8c824a300cbaaaa93700adc893?raw=1"
-           target="_blank" rel="noopener" style="text-decoration:none; display:inline-block;">
-          Ver certificado →
-        </a>
-      </div>
-    </div>
-
-    <!-- DataCamp Track 2 -->
-    <div style="border:1px solid var(--border); border-radius:12px; padding:12px;">
-      <b>Machine Learning Scientist in Python</b>
-      <div style="font-size:0.88rem; color:var(--text-muted); margin-top:6px;">
-        DataCamp · Track Certificate
-      </div>
-      <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="tag" href="https://www.datacamp.com/statement-of-accomplishment/track/9ce10992f640ca05a80af19ab64c59d23ade11d5?raw=1"
-           target="_blank" rel="noopener" style="text-decoration:none; display:inline-block;">
-          Ver certificado →
-        </a>
-      </div>
-    </div>
-
-    <!-- Uniandes -->
-    <div style="border:1px solid var(--border); border-radius:12px; padding:12px;">
-      <b>Evaluación de Impacto</b>
-      <div style="font-size:0.88rem; color:var(--text-muted); margin-top:6px;">
-        Universidad de los Andes · Certificado
-      </div>
-      <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="tag" href="https://wallet.xertify.co/certificates/D47BFBF3C002"
-           target="_blank" rel="noopener" style="text-decoration:none; display:inline-block;">
-          Ver certificado →
-        </a>
-      </div>
-    </div>
-
-    <!-- DataCamp Portfolio -->
-    <div style="border:1px dashed var(--border); border-radius:12px; padding:12px; background: rgba(0,0,0,0.02);">
-      <b>Portafolio DataCamp</b>
-      <div style="font-size:0.88rem; color:var(--text-muted); margin-top:6px;">
-        Cursos, rutas finalizadas y credenciales adicionales.
-      </div>
-      <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="tag" href="https://www.datacamp.com/portfolio/laquimbayos-e8d0a79f-1af3-40ad-97c4-69c3a6ff5488"
-           target="_blank" rel="noopener" style="text-decoration:none; display:inline-block;">
-          Ver portafolio →
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
+      <div class="grid">
+        <div class="card" style="padding: 20px;">
+          <h4 style="margin:0">Associate AI Engineer</h4>
+          <span style="font-size:0.8rem; color:var(--text-muted)">DataCamp · 2024</span>
+          <a href="https://www.datacamp.com/statement-of-accomplishment/track/73721ace7917aa8c824a300cbaaaa93700adc893?raw=1" target="_blank" class="tag" style="margin-top:15px; text-align:center; text-decoration:none;">Ver Credencial</a>
+        </div>
+        <div class="card" style="padding: 20px;">
+          <h4 style="margin:0">Machine Learning Scientist</h4>
+          <span style="font-size:0.8rem; color:var(--text-muted)">DataCamp · 2023</span>
+          <a href="https://www.datacamp.com/statement-of-accomplishment/track/9ce10992f640ca05a80af19ab64c59d23ade11d5?raw=1" target="_blank" class="tag" style="margin-top:15px; text-align:center; text-decoration:none;">Ver Credencial</a>
+        </div>
+        <div class="card" style="padding: 20px;">
+          <h4 style="margin:0">Evaluación de Impacto</h4>
+          <span style="font-size:0.8rem; color:var(--text-muted)">Uniandes · 2023</span>
+          <a href="https://wallet.xertify.co/certificates/D47BFBF3C002" target="_blank" class="tag" style="margin-top:15px; text-align:center; text-decoration:none;">Ver Credencial</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="contacto" style="padding: 80px 0;">
+  <section id="contacto" style="padding: 100px 0;">
     <div class="container" style="text-align: center;">
-      <div class="card" style="max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);">
-        <h2 style="margin-top:0">¿Hablamos de datos?</h2>
-        <p style="color: rgba(255,255,255,0.8)">Disponible para consultorías de automatización y roles senior en Data Science.</p>
-        <div class="btn-group" style="justify-content: center; margin-top: 20px;">
-          <a href="mailto:laquimbayos@gmail.com" class="btn primary" style="background: white; color: var(--primary);">Email</a>
-          <a href="https://www.linkedin.com/in/luis-alejandro-quimbayo-suarez-89612a160/" target="_blank" class="btn outline" style="border-color: white;">LinkedIn</a>
+      <div class="card" style="max-width: 700px; margin: 0 auto; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); border:none; padding: 50px;">
+        <h2 style="margin-top:0; font-size: 2.5rem;">¿Hablamos de datos?</h2>
+        <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem;">Disponible para consultorías de automatización y roles senior en Data Science.</p>
+        <div class="btn-group" style="justify-content: center; margin-top: 30px;">
+          <a href="mailto:laquimbayos@gmail.com" class="btn primary" style="background: white; color: var(--primary);">Enviar Email</a>
+          <a href="https://www.linkedin.com/in/luis-alejandro-quimbayo-suarez-89612a160/" target="_blank" class="btn outline" style="border-color: white; color: white;">LinkedIn</a>
         </div>
       </div>
     </div>
@@ -366,14 +306,15 @@
 
 <footer>
   <div class="container">
-    <p>© <span id="year"></span> · Luis Alejandro Quimbayo · Data Science & Analytics · laquimbayos@gmail.com </p>
+    <p>© <span id="year"></span> · Luis Alejandro Quimbayo · Data Science & Economics</p>
+    <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.5;">Diseñado con Inter & CSS Glassmorphism</p>
   </div>
 </footer>
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
   
-  // Efecto sutil de revelación al hacer scroll
+  const observerOptions = { threshold: 0.1 };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -381,12 +322,12 @@
         entry.target.style.transform = "translateY(0)";
       }
     });
-  }, { threshold: 0.1 });
+  }, observerOptions);
 
   document.querySelectorAll('.card, .exp-item').forEach(el => {
     el.style.opacity = "0";
-    el.style.transform = "translateY(20px)";
-    el.style.transition = "all 0.6s ease-out";
+    el.style.transform = "translateY(25px)";
+    el.style.transition = "all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1)";
     observer.observe(el);
   });
 </script>
