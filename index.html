@@ -84,6 +84,27 @@
     .tag-container { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 20px; }
     .tag { font-size: 11px; padding: 4px 10px; border-radius: 6px; background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.2); font-weight: 600; }
 
+    /* Demo Section Styles */
+    .demo-frame-container {
+      width: 100%;
+      height: 650px;
+      background: #000;
+      border-radius: 24px;
+      border: 1px solid var(--primary-light);
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .disclaimer {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 20px;
+      padding: 15px;
+      background: var(--glass);
+      border-left: 3px solid var(--accent-cyan);
+      border-radius: 4px;
+    }
+
     /* Experience Specific */
     .exp-item { border-left: 2px solid var(--primary-light); padding-left: 20px; position: relative; margin-bottom: 40px; }
     .exp-item::before { content: ''; position: absolute; left: -7px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--primary-light); box-shadow: 0 0 10px var(--primary-light); }
@@ -103,6 +124,7 @@
       .btn-group { justify-content: center; }
       .nav-links { display: none; }
       .logo-rail { justify-content: flex-start; }
+      .demo-frame-container { height: 500px; }
     }
   </style>
 </head>
@@ -119,7 +141,7 @@
       <nav class="nav-links">
         <a href="#proyectos">Proyectos</a>
         <a href="#experiencia">Trayectoria</a>
-        <a href="#certificaciones">Certificaciones</a>
+        <a href="#demos">Demos</a>
         <a href="#contacto">Contacto</a>
       </nav>
     </div>
@@ -200,9 +222,9 @@
           </div>
         </div>
 
-      <div class="card">
+        <div class="card">
           <h3>Prescriptive Analytics</h3>
-          <p style="font-size:0.9rem; color:var(--text-muted)">Modelado de algoritmos de validación para detección de anomalías y riesgos en procesos de pagos institucionales o transferencias monetarias./p>
+          <p style="font-size:0.9rem; color:var(--text-muted)">Modelado de algoritmos de validación para detección de anomalías y riesgos en procesos de pagos institucionales o transferencias monetarias.</p>
           <div class="tag-container">
             <span class="tag">Python</span><span class="tag">ETL</span><span class="tag">BI</span>
           </div>
@@ -216,16 +238,13 @@
           </div>
         </div>
 
-      <div class="card">
+        <div class="card">
           <h3>Pre-Invoicing & Pricing Tool</h3>
-          <p style="font-size:0.9rem; color:var(--text-muted)">Desarrollo de aplicaciones en local para el cruce de bases de datos,
-    cálculo de precios según consumo y generación automática de prefacturas.</p>
+          <p style="font-size:0.9rem; color:var(--text-muted)">Desarrollo de aplicaciones en local para el cruce de bases de datos, cálculo de precios según consumo y generación automática de prefacturas.</p>
           <div class="tag-container">
             <span class="tag">Python</span><span class="tag">Excel Macros</span><span class="tag">Business Rules</span>
           </div>
         </div>
-
-
       </div>
     </div>
   </section>
@@ -290,13 +309,37 @@
     </div>
   </section>
 
+  <section id="demos" style="padding: 80px 0; background: rgba(56, 189, 248, 0.03);">
+    <div class="container">
+      <div class="section-title">
+        <h2>Demos en Tiempo Real</h2>
+        <p>Explora soluciones funcionales desplegadas en la nube.</p>
+      </div>
+
+      <div class="disclaimer">
+        📌 <strong>Nota técnica:</strong> Este es un entorno de pruebas gratuito y recursivo, diseñado para mostrar soluciones de manera práctica. 
+        El tiempo de carga inicial puede ser mayor a lo habitual debido a las limitaciones de recursos de las herramientas gratuitas (Cold Start).
+      </div>
+
+      <div class="demo-frame-container">
+        <iframe
+          src="https://laquimbayos-yolo-ocr-llm.hf.space"
+          frameborder="0"
+          width="100%"
+          height="100%"
+          style="background: #ffffff;"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
   <section id="contacto" style="padding: 100px 0;">
     <div class="container" style="text-align: center;">
       <div class="card" style="max-width: 700px; margin: 0 auto; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); border:none; padding: 50px;">
         <h2 style="margin-top:0; font-size: 2.5rem;">¿Hablamos de datos?</h2>
         <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem;">Disponible para consultorías de automatización y roles senior en Data Science.</p>
         <div class="btn-group" style="justify-content: center; margin-top: 30px;">
-          <a href="https://wa.me/573505017315?text=Hola%20quisiera%20ponerme%20en%20contacto" class="btn primary"  style="background: white; color: var(--primary);" target="_blank" rel="noopener">Escribir por WhatsApp </a>
+          <a href="https://wa.me/573505017315?text=Hola%20Luis,%20vi%20tu%20portafolio%20y%20me%20gustaría%20contactarte" class="btn primary" style="background: white; color: var(--primary);" target="_blank" rel="noopener">Escribir por WhatsApp</a>
           <a href="https://www.linkedin.com/in/luis-alejandro-quimbayo-suarez-89612a160/" target="_blank" class="btn outline" style="border-color: white; color: white;">LinkedIn</a>
         </div>
       </div>
@@ -324,7 +367,7 @@
     });
   }, observerOptions);
 
-  document.querySelectorAll('.card, .exp-item').forEach(el => {
+  document.querySelectorAll('.card, .exp-item, .demo-frame-container').forEach(el => {
     el.style.opacity = "0";
     el.style.transform = "translateY(25px)";
     el.style.transition = "all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1)";
@@ -334,5 +377,3 @@
 
 </body>
 </html>
-
-
